@@ -2,7 +2,7 @@ name: Deploy Vite app to GitHub Pages
 
 on:
   push:
-    branches: [ "main" ]   # Tự động chạy mỗi khi bạn push lên main
+    branches: [ "main" ]
   workflow_dispatch:
 
 permissions:
@@ -33,14 +33,13 @@ jobs:
       - name: Build project
         run: npm run build
 
-      # Sao chép index.html thành 404.html (để fix lỗi reload khi dùng React Router)
-      - name: Create 404.html
+      - name: Create 404.html (SPA fallback)
         run: cp dist/index.html dist/404.html
 
       - name: Upload build output
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './dist'
+          path: ./dist
 
   deploy:
     needs: build
