@@ -6,3 +6,5 @@
   from = "/*"
   to = "/index.html"
   status = 200
+
+# Deploy to Netlify - Triggered at Nov 9, 8:00 AM
